@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomex: The Ultimate Roblox Executor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        :root {
+            --primary: #00d1b2;
+            --background: #0a0a0a;
+            --text: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .logo-icon {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        nav {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                display: flex;
+                gap: 1rem;
+            }
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(0, 209, 178, 0.1);
+            color: var(--primary);
+        }
+
+        .hero {
+            position: relative;
+            height: 80vh;
+            background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3.75rem;
+            }
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.375rem;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .button-primary {
+            background-color: var(--primary);
+            color: var(--background);
+        }
+
+        .button-primary:hover {
+            background-color: #00b89f;
+        }
+
+        .button-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .button-secondary:hover {
+            background-color: rgba(0, 209, 178, 0.1);
+        }
+
+        #features {
+            padding: 5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .feature-card {
+            background-color: rgba(0, 209, 178, 0.1);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-0.25rem);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-icon {
+            width: 3rem;
+            height: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            color: var(--text);
+        }
+
+        #download {
+            background-color: var(--primary);
+            color: var(--background);
+            padding: 5rem 0;
+        }
+
+        .download-content {
+            text-align: center;
+        }
+
+        .download-title {
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .download-description {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+        }
+
+        #about {
+            padding: 5rem 0;
+        }
+
+        .about-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+            }
+        }
+
+        .about-content h2 {
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .about-description {
+            font-size: 1.125rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            object-fit: cover;
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: var(--background);
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="dark bg-[#0a0a0a] text-white">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <a href="#" class="logo">
+                        <svg class="logo-icon animate-fadeIn" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#00d1b2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="#00d1b2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="#00d1b2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="text-lg font-bold">Zomex</span>
+                    </a>
+                    <nav>
+                        <a href="#features" class="animate-fadeIn">Features</a>
+                        <a href="#about" class="animate-fadeIn">About</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section class="hero">
+                <div class="hero-overlay"></div>
+                <div class="container">
+                    <div class="hero-content">
+                        <h1 class="animate-fadeIn">Zomex: The Ultimate Roblox Executor</h1>
+                        <p class="animate-fadeIn">
+                            Powered by Zomex, the most advanced and reliable Roblox executor on the market.
+                        </p>
+                        <div class="button-group animate-fadeIn">
+                            <a href="#" class="button button-primary">Direct Sideloading</a>
+                            <a href="#" class="button button-secondary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="features">
+                <div class="container">
+                    <div class="features-grid animate-fadeIn">
+                        <div class="feature-card">
+                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.5 16.5C3.12 15.78 2.25 14.28 2.25 12.75C2.25 10.41 4.14 8.52 6.48 8.52C6.71 8.52 6.94 8.54 7.17 8.59C7.35 8.63 7.54 8.55 7.64 8.4C8.84 6.61 10.87 5.25 13.23 5.25C16.47 5.25 19.27 7.62 19.87 10.75C19.91 10.95 20.09 11.11 20.3 11.11C22.07 11.11 23.51 12.55 23.51 14.32C23.51 15.84 22.46 17.16 21.04 17.5" stroke="#00d1b2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14.83 13.12L12 15.95L9.17 13.12" stroke="#00d1b2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 8.5V15.95" stroke="#00d1b2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <h3 class="feature-title">Blazing Fast</h3>
+                            <p class="feature-description">
+                                Zomex is optimized for lightning-fast performance, ensuring your scripts execute seamlessly.
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.91 11.12C20.91 16.01 17.36 20.59 12.51 21.93C12.18 22.02 11.82 22.02 11.49 21.93C6.64 20.59 3.09 16.01 3.09 11.12V6.73C3.09 5.91 3.7 4.98 4.47 4.67L10.05 2.39C11.3 1.93 12.71 1.93 13.96 2.39L19.54 4.67C20.31 4.98 20.92 5.91 20.92 6.73V11.12H20.91Z" stroke="#00d1b2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 12.5C13.1046 12.5 14 11.6046 14 10.5C14 9.39543 13.1046 8.5 12 8.5C10.8954 8.5 10 9.39543 10 10.5C10 11.6046 10.8954 12.5 12 12.5Z" stroke="#00d1b2" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 12.5V15.5" stroke="#00d1b2" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <h3 class="feature-title">Secure and Reliable</h3>
+                            <p class="feature-description">
+                                Zomex is built with robust security measures to protect your Roblox account and ensure a safe
+                                experience. It bypasses Byfron, making it a secure and reliable solution.
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#00d1b2" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 12.88V11.12C2 10.08 2.85 9.22 3.9 9.22C5.71 9.22 6.45 7.94 5.54 6.37C5.02 5.47 5.33 4.3 6.24 3.78L7.97 2.79C8.76 2.32 9.78 2.6 10.25 3.39L10.36 3.58C11.26 5.15 12.74 5.15 13.65 3.58L13.76 3.39C14.23 2.6 15.25 2.32 16.04 2.79L17.77 3.78C18.68 4.3 18.99 5.47 18.47 6.37C17.56 7.94 18.3 9.22 20.11 9.22C21.15 9.22 22.01 10.07 22.01 11.12V12.88C22.01 13.92 21.16 14.78 20.11 14.78C18.3 14.78 17.56 16.06 18.47 17.63C18.99 18.54 18.68 19.7 17.77 20.22L16.04 21.21C15.25 21.68 14.23 21.4 13.76 20.61L13.65 20.42C12.75 18.85 11.27 18.85 10.36 20.42L10.25 20.61C9.78 21.4 8.76 21.68 7.97 21.21L6.24 20.22C5.33 19.7 5.02 18.53 5.54 17.63C6.45 16.06 5.71 14.78 3.9 14.78C2.85 14.78 2 13.92 2 12.88Z" stroke="#00d1b2" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <h3 class="feature-title">Highly Customizable</h3>
+                            <p class="feature-description">
+                                Zomex offers a wide range of customization options to tailor your Roblox experience.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="download">
+                <div class="container">
+                    <div class="download-content animate-fadeIn">
+                        <h2 class="download-title">Download Zomex</h2>
+                        <p class="download-description">
+                            Get the latest version of Zomex and start enhancing your Roblox experience today.
+                        </p>
+                        <a href="#" class="button button-primary animate-fadeIn">Direct Sideloading</a>
+                    </div>
+                </div>
+            </section>
+            <section id="about">
+                <div class="container">
+                    <div class="about-grid animate-fadeIn">
+                        <div class="about-content">
+                            <h2>About Zomex</h2>
+                            <p class="about-description">
+                                Zomex is a powerful and reliable Roblox executor. Our team of experienced developers has created a
+                                tool that offers unparalleled performance, security, and customization options to enhance your Roblox
+                                experience.
+                            </p>
+                            <a href="#" class="button button-secondary animate-fadeIn">Learn More</a>
+                        </div>
+                        <div class="about-image">
+                            <img src="https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="About Zomex" width="600" height="400">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo animate-fadeIn">
+                        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="text-lg font-bold">Zomex</span>
+                    </div>
+                    <p class="footer-text">&copy; 2024 Zomex. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
