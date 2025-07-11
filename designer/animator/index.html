@@ -5,56 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Zomex•UIX</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     html, body {
       height: 100%;
       width: 100%;
       overflow: hidden;
     }
+
     iframe {
       position: absolute;
       top: 0;
       left: 0;
       width: 100vw;
-      border: none;
-      display: block;
-    }
-  </style>
-</head>
-<body>
-  <iframe
-    id="instant-preview-iframe"
-    src="https://subject-rose-745.preview.series.engineering"
-    sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"
-    allow="geolocation; microphone; camera; midi; encrypted-media; autoplay; clipboard-write; picture-in-picture; fullscreen; display-capture; payment; accelerometer; gyroscope; storage-access">
-  </iframe>
-
-  <script>
-    function resizeIframe() {
-      const iframe = document.getElementById("instant-preview-iframe");
-      iframe.style.height = window.innerHeight + "px";
-    }
-
-    window.addEventListener("resize", resizeIframe);
-    window.addEventListener("orientationchange", resizeIframe);
-    window.addEventListener("load",<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Zomex•UIX</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-    }
-    iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
+      height: 100vh;
       border: none;
       display: block;
     }
@@ -77,10 +45,6 @@
     window.addEventListener("resize", resizeIframe);
     window.addEventListener("orientationchange", resizeIframe);
     window.addEventListener("load", resizeIframe);
-  </script>
-</body>
-</html>
- resizeIframe);
   </script>
 </body>
 </html>
